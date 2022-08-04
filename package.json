@@ -6,11 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "moralis:sync": "moralis-admin-cli connect-local-devchain --chain hardhat --moralisSubdomain 5oqa20l4xh8d.usemoralis.com --frpcPath ./frp/frpc",
-    "moralis:cloud": "moralis-admin-cli watch-cloud-folder --moralisSubdomain 5oqa20l4xh8d.usemoralis.com --autoSave 1 --moralisCloudfolder ./cloud-functions"
+    "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.9",
+    "graphql": "^16.5.0",
     "magic-sdk": "^8.1.1",
     "moralis": "^1.5.11",
     "next": "12.1.5",

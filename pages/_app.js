@@ -2,9 +2,15 @@ import "styles/globals.css"
 import Head from "next/head"
 import { MoralisProvider } from "react-moralis"
 import { NotificationProvider } from "web3uikit"
+import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client"
 
 import Header from "components/header"
 import env from "constants/env"
+
+const client = new ApolloClient({
+    cache: new InMemoryCache(),
+    uri: env.subgraphUrl,
+})
 
 function MyApp({ Component, pageProps }) {
     return (
@@ -15,10 +21,12 @@ function MyApp({ Component, pageProps }) {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <MoralisProvider initializeOnMount={false}>
-                <NotificationProvider>
-                    <Header />
-                    <Component {...pageProps} />
-                </NotificationProvider>
+                <ApolloProvider client={client}>
+                    <NotificationProvider>
+                        <Header />
+                        <Component {...pageProps} />
+                    </NotificationProvider>
+                </ApolloProvider>
             </MoralisProvider>
         </div>
     )
